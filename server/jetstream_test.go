@@ -7041,47 +7041,47 @@ func TestJetStreamSuperClusterSystemLimitsPlacement(t *testing.T) {
 		)
 		switch serverName {
 		case "a0":
-			natsPort = 4000
-			systemLimit = largeSystemLimit
-			clusterName = "cluster-a"
-			clusterPort = 6000
-			route1, route2, route3 = clusterPort, clusterPort+1, clusterPort+2
-			gatewayPort = 7000
-		case "a1":
 			natsPort = 4001
 			systemLimit = largeSystemLimit
 			clusterName = "cluster-a"
 			clusterPort = 6001
 			route1, route2, route3 = clusterPort, clusterPort+1, clusterPort+2
 			gatewayPort = 7001
-		case "a2":
+		case "a1":
 			natsPort = 4002
 			systemLimit = largeSystemLimit
 			clusterName = "cluster-a"
 			clusterPort = 6002
 			route1, route2, route3 = clusterPort, clusterPort+1, clusterPort+2
 			gatewayPort = 7002
-		case "b0":
-			natsPort = 4100
-			systemLimit = smallSystemLimit
-			clusterName = "cluster-b"
-			clusterPort = 6100
+		case "a2":
+			natsPort = 4003
+			systemLimit = largeSystemLimit
+			clusterName = "cluster-a"
+			clusterPort = 6003
 			route1, route2, route3 = clusterPort, clusterPort+1, clusterPort+2
-			gatewayPort = 7100
-		case "b1":
+			gatewayPort = 7003
+		case "b0":
 			natsPort = 4101
 			systemLimit = smallSystemLimit
 			clusterName = "cluster-b"
 			clusterPort = 6101
 			route1, route2, route3 = clusterPort, clusterPort+1, clusterPort+2
 			gatewayPort = 7101
-		case "b2":
+		case "b1":
 			natsPort = 4102
 			systemLimit = smallSystemLimit
 			clusterName = "cluster-b"
 			clusterPort = 6102
 			route1, route2, route3 = clusterPort, clusterPort+1, clusterPort+2
 			gatewayPort = 7102
+		case "b2":
+			natsPort = 4103
+			systemLimit = smallSystemLimit
+			clusterName = "cluster-b"
+			clusterPort = 6103
+			route1, route2, route3 = clusterPort, clusterPort+1, clusterPort+2
+			gatewayPort = 7103
 		default:
 			t.Fatalf("unknown server name: %s", serverName)
 		}
@@ -7114,8 +7114,8 @@ gateway {
   port: %d
 
   gateways: [
-    {name: "cluster-a", url: "nats://localhost:7000"},
-    {name: "cluster-b", url: "nats://localhost:7100"},
+    {name: "cluster-a", url: "nats://localhost:7001"},
+    {name: "cluster-b", url: "nats://localhost:7101"},
   ]
 }
 	`,
